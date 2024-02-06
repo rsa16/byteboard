@@ -1,0 +1,15 @@
+macro(use_props TARGET CONFIGS PROPS_FILE)
+    set(PROPS_TARGET "${TARGET}")
+    foreach(PROPS_CONFIG ${CONFIGS})
+        string(TOUPPER "${PROPS_CONFIG}" PROPS_CONFIG_U)
+
+        get_filename_component(ABSOLUTE_PROPS_FILE "${PROPS_FILE}" ABSOLUTE BASE_DIR "${CMAKE_CURRENT_LIST_DIR}")
+        if(EXISTS "${ABSOLUTE_PROPS_FILE}")
+            include("${ABSOLUTE_PROPS_FILE}")
+        else()
+            message(WARNING "Corresponding cmake file from props \"${ABSOLUTE_PROPS_FILE}\" doesn't exist")
+        endif()
+    endforeach()
+endmacro()
+
+set(DEFAULT_CXX_PROPS "${CMAKE_CURRENT_LIST_DIR}/DefaultCXX.cmake")
