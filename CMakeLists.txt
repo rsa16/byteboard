@@ -30,6 +30,7 @@ set(CMAKE_CONFIGURATION_TYPES
 
 include(cmake/Utils.cmake)
 
+
 #############################
 # Source Files
 #############################
@@ -41,7 +42,9 @@ set(ADDITIONAL_LIBRARY_DEPENDENCIES
     Qt6::Core
     Qt6::Gui
     Qt6::Quick
+    QWindowKit::Quick
 )
+
 
 #############################
 # QT Standard Setup
@@ -50,12 +53,25 @@ find_package(Qt6 COMPONENTS Core Gui Quick REQUIRED)
 qt_standard_project_setup(REQUIRES 6.5)
 
 qt_add_executable(${PROJECT_NAME} ${Source_Files})
+qt_add_resources(${PROJECT_NAME} "qml"
+    PREFIX "/"
+    FILES data/main.qml
+)
 
 use_props(${PROJECT_NAME} "${CMAKE_CONFIGURATION_TYPES}" "${DEFAULT_CXX_PROPS}")
+
+
+#############################
+# External Packages
+#############################
+add_subdirectory(external/qwindowkit)
+find_package(QWindowKit REQUIRED)
+
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ${ADDITIONAL_LIBRARY_DEPENDENCIES})
 
 set(QT_ALLOW_MISSING_TOOLS_PACKAGES ON)
+
 
 #############################
 # Target Properties
