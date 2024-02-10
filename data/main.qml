@@ -1,10 +1,15 @@
 import QtQuick 6.5
 
 Window {
-    width: 500
-    height: 500
+    width: mainScreen.width
+    height: mainScreen.height
+    title: "ByteBoard"
+
     visible: true
-    title: "UntitledProject1"
+    color: "transparent"
+    flags: Qt.Widget | Qt.FramelessWindowHint
+
+    Splash {
+        id: mainScreen
+    }
 }
-
-
