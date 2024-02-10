@@ -38,6 +38,11 @@ set(Source_Files
     "src/main.cpp"
 )
 
+set(QML_FILES
+    data/main.qml
+    data/Splash.ui.qml
+)
+
 set(ADDITIONAL_LIBRARY_DEPENDENCIES
     Qt6::Core
     Qt6::Gui
@@ -55,7 +60,7 @@ qt_standard_project_setup(REQUIRES 6.5)
 qt_add_executable(${PROJECT_NAME} ${Source_Files})
 qt_add_resources(${PROJECT_NAME} "qml"
     PREFIX "/"
-    FILES data/main.qml
+    FILES ${QML_FILES}
 )
 
 use_props(${PROJECT_NAME} "${CMAKE_CONFIGURATION_TYPES}" "${DEFAULT_CXX_PROPS}")
