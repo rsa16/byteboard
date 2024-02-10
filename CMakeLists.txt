@@ -42,7 +42,7 @@ set(ADDITIONAL_LIBRARY_DEPENDENCIES
     Qt6::Core
     Qt6::Gui
     Qt6::Quick
-    QWindowKit::Quick
+    # QWindowKit::Quick
 )
 
 
@@ -64,8 +64,8 @@ use_props(${PROJECT_NAME} "${CMAKE_CONFIGURATION_TYPES}" "${DEFAULT_CXX_PROPS}")
 #############################
 # External Packages
 #############################
-add_subdirectory(external/qwindowkit)
-find_package(QWindowKit REQUIRED)
+# add_subdirectory(external/qwindowkit)
+# find_package(QWindowKit REQUIRED)
 
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ${ADDITIONAL_LIBRARY_DEPENDENCIES})
