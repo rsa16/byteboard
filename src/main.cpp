@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     // later code
     // engine.addImportPath(QCoreApplication::applicationDirPath() + "/qml");
-    // engine.addImportPath(":/");
+    engine.addImportPath(":/");
 
     engine.load(url);
 
